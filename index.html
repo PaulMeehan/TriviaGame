@@ -5,29 +5,50 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>My Title</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
 
-    <!-- My javascript file -->
+    <title>Totally Trivial Trivia</title>
+
+    <!-- Project-specific style sheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Project-specific javascript file -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
     <script>
-
+        // local script code
     </script>
 
 </head>
 
 <body>
 
-    $(document).ready(function(){
+    <main id="mainContainer">
+        <header>
+            <p id="banner">Totally Trivial Trivia!</p>
+        </header>
+        
+        <section id="timerSection">
+            Time Remaining: <span id="timer">XX</span> Seconds
+        </section>
+
+        <section id="questionResult">
+            <p>question / result goes here</p>
+        </section>
+
+        <section id="choices">
+            <p>choices go here</p>
+        </section>
+
+        <section id="pictures">
+            <p>pictures go here</p>
+        </section>
+    </main>
 
 
-    });
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 </body>
 
