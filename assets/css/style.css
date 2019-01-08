@@ -27,3 +27,11 @@ section {
 #timer {
     font-size: 20px;
 }
+
+#graphics {
+    position: relative;
+}
+.answerButton {
+    height: 35px;
+    display: block;
+}

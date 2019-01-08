@@ -29,20 +29,24 @@
             <p id="banner">Totally Trivial Trivia!</p>
         </header>
         
-        <section id="timerSection">
+        <section>
+            <button type="button" id="startup" onclick="showQuestion()">Start</button>
+        </section>
+
+        <section  id="timerSection">
             Time Remaining: <span id="timer">XX</span> Seconds
         </section>
 
-        <section id="questionResult">
-            <p>question / result goes here</p>
+        <section>
+            <ul id="questionResult"></ul>
         </section>
 
-        <section id="choices">
-            <p>choices go here</p>
+        <section>
+            <p id="graphics">choices or graphics go here</p>
         </section>
 
-        <section id="pictures">
-            <p>pictures go here</p>
+        <section>
+            <button type="button" id="restart" onclick="alert('Start over')">Start Over</button>
         </section>
     </main>
 
