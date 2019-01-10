@@ -29,9 +29,11 @@ section {
 }
 
 #graphics {
-    position: relative;
+    width: 400px;
+    margin-left: 35%;
 }
 .answerButton {
     height: 35px;
     display: block;
 }
+

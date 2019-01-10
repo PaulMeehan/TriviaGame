@@ -2,7 +2,8 @@
 var trivia = {
     question: "Which soft drink was originally called Brad's Drink",
     answers: ["Coca-Cola", "Mountain Dew", "Pepsi", "Dr Pepper"],
-    correctAnswer: 2
+    correctAnswer: 2,
+    image: "pepsi.jpg"
 };
 
 
@@ -15,6 +16,17 @@ function startGame () {
     $("#restart").hide();
 };
 
+function checkAnswer (answer) {
+    $("#graphics").empty();
+    if (answer === trivia.correctAnswer) {
+        $("#questionResult").text("Correct!");
+    } else {
+        $("#questionResult").text("Wrong!");
+        $("#graphics").append("<p>The correct answer was: " + trivia.answers[trivia.correctAnswer] + "</p>");
+    };
+    $("#graphics").append("<img src='assets/images/" + trivia.image + "'>");
+};
+
 function listQuestions () {
     // first, empty the contents of the graphics section
     $("#graphics").empty();
@@ -25,8 +37,9 @@ function listQuestions () {
         var newButton = $("<button>");
         newButton.text(trivia.answers[i]);
         newButton.attr("button-value", i);
-        newButton.attr("onClick", "alert('you chose:" + i + "')");
+        newButton.attr("onClick", "checkAnswer(" + i + ")");
         newButton.attr("class","answerButton");
+        newButton.css("width","400px");
         $("#graphics").append(newButton);
     };
     // qlist.append("</ul>");
