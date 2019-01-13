@@ -1,5 +1,10 @@
 
 var trivia = [
+// This object contains the following fields:
+// question = the question being asked
+// answers = an array of 4 possible answers, includes the correct answer
+// correctAnswer = the index of the array element that is the correct answer
+// image = the name of the image file to be displayed along with this question.
 {
     question: "Which soft drink was originally called Brad's Drink?",
     answers: ["Coca-Cola", "Mountain Dew", "Pepsi", "Dr Pepper"],
@@ -13,6 +18,7 @@ var trivia = [
 }
 ];
 
+// declare variables
 var questionNumber = 0;
 var time = 0;
 var intervalID;
@@ -20,13 +26,23 @@ var wins = 0;
 var losses = 0;
 var timeOuts = 0;
 
+
 function endOfGame () {
     $("#graphics").empty();
     $("#result").text("Game Over!");
     $("#graphics").append("<p>Number of wins: " + wins + "</p>");
     $("#graphics").append("<p>Number of losses: " + losses + "</p>");
     $("#graphics").append("<p>Number of time outs: " + timeOuts + "</p>");
-    
+    $("#restart").show();
+};
+
+function checkForLastQuestion () {
+    questionNumber = questionNumber + 1;
+    if (questionNumber >= trivia.length) {
+        endOfGame();
+    } else {
+        showQuestion();
+    };
 };
 
 function endOfQuestion (result) {
@@ -52,14 +68,8 @@ function endOfQuestion (result) {
     $("#graphics").append("<img src='assets/images/" + trivia[questionNumber].image + "' height :250px; width: 200px>");
 
     //pause for 5 seconds and then display next question
-    intervalID = setTimeout(showQuestion, 5000);
+    intervalID = setTimeout(checkForLastQuestion, 5000);
     
-    questionNumber = questionNumber + 1;
-    if (questionNumber >= trivia.length) {
-        endOfGame();
-    };
-
-
 };
 
 function decrement () {
@@ -72,16 +82,6 @@ function decrement () {
     } 
 };
 
-function startGame () {
-    console.log("startGame");
-    //show or hide the appropriate parts of the window
-    $("#startup").show();
-    $("#timerSection").hide();
-    $("#question").hide();
-    $("#result").hide();
-    $("#graphics").hide();
-    $("#restart").hide();
-};
 
 function checkAnswer (answer) {
     //first stop the timer
@@ -130,8 +130,25 @@ function showQuestion () {
 };
 
 
-$(document).ready(function () {
+function startGame() {
+    console.log("startGame");
+    //reinitialize counters    
+    questionNumber = 0;
+    time = 0;
+    intervalID;
+    wins = 0;
+    losses = 0;
+    timeOuts = 0;
+
+    //show or hide the appropriate parts of the window
+    $("#startup").show();
+    $("#timerSection").hide();
+    $("#question").hide();
+    $("#result").hide();
+    $("#graphics").hide();
+    $("#restart").hide();
+};
+
+// Start the game!
 
 startGame();
-
-});
