@@ -1,31 +1,60 @@
 body {
     font-size: 24px;
-    /* background-image: url("../images/light-grey-terrazzo.png"); */
+    background-image: url("../images/questionmarks.jpg");
     text-align: center;
+    font-family: 'Love Ya Like A Sister', cursive;
+    color: white;
 }
 
-/* section {
-    border:  1px solid red;
-} */
+button {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 20px;
+    font-weight: bold;
+}
 
 #mainContainer {
     width: 80%;
-    background-color: lightskyblue;
+    height: 625px;
+    background-color: rgb(24, 107, 158);
     margin: 5% 10%;
 }
 
 #banner {
-    font-size: 40px;
+    font-size: 65px;
     text-align: center;
     padding-top: 25px;
+    text-decoration: underline;
+}
+
+#startup {
+    width: 250px;
+    font-size: 30px;
+    margin: 22px;
 }
 
 #timerSection {
-    margin: 20px;
+    width: 400px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 423px;
+    border: 1px solid white;
 }
 
 #timer {
-    font-size: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#question {
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+#result {
+    text-decoration: underline;
 }
 
 #graphics {
@@ -35,5 +64,6 @@ body {
 .answerButton {
     height: 35px;
     display: block;
+    margin: 8px;
 }
 

@@ -10,21 +10,24 @@
     <!-- Project-specific style sheet -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+    <!-- Special font from Google-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+
 </head>
 
 <body>
 
     <main id="mainContainer">
         <header>
-            <p id="banner">Totally Trivial Trivia!</p>
+            <div id="banner">Totally Trivial Trivia!</div>
         </header>
         
         <section>
-            <button type="button" id="startup" onclick="showQuestion()">Start</button>
+            <button type="button" id="startup" onclick="showQuestion()">Start the game!</button>
         </section>
 
-        <section  id="timerSection">
-            Time Remaining: <span id="timer">XX</span> Seconds
+        <section id="timerSection">
+            Time Remaining: &nbsp;<span id="timer"></span> Seconds
         </section>
 
         <section id="question">

@@ -21,7 +21,7 @@ var trivia = [
     correctAnswer: 3,
     image: "croissant.jpg"
 },
-{   question: "In the United States, what is the name given to a presidnt who never served in Congress?",
+{   question: "In the US, what is a president who never served in Congress known as?",
     answers: ["Washington outsider", "Jefferson outcast", "Arthur nomad", "Lame duck"],
     correctAnswer: 0,
     image: "washington.jpg"
@@ -42,13 +42,13 @@ var losses = 0;                 // number of questions answered incorrectly
 var timeOuts = 0;               // number of questions where time ran out
 var questionNumbers = [];       // array of trivia index numbers to select from
 
-
 function endOfGame () {
+    $("#queston").text("");
     $("#graphics").empty();
     $("#result").text("Game Over!");
-    $("#graphics").append("<p>Number of wins: " + wins + "</p>");
-    $("#graphics").append("<p>Number of losses: " + losses + "</p>");
-    $("#graphics").append("<p>Number of time outs: " + timeOuts + "</p>");
+    $("#graphics").append("<p>Number of wins: &nbsp; " + wins + "</p>");
+    $("#graphics").append("<p>Number of losses: &nbsp;" + losses + "</p>");
+    $("#graphics").append("<p>Number of timeouts: &nbsp;" + timeOuts + "</p>");
     $("#restart").show();
 };
 
@@ -79,7 +79,7 @@ function endOfQuestion (result) {
     }
     // first, empty the contents of the graphics section
     $("#graphics").empty();
-    $("#graphics").append("<p>The correct answer was: " + trivia[currentQuestionNumber].answers[trivia[currentQuestionNumber].correctAnswer] + "</p>");
+    $("#graphics").append("<p>Correct answer: " + trivia[currentQuestionNumber].answers[trivia[currentQuestionNumber].correctAnswer] + "</p>");
     $("#graphics").append("<img src='assets/images/" + trivia[currentQuestionNumber].image + "' height :250px; width: 200px>");
 
     //pause for 5 seconds and then display next question
@@ -90,8 +90,12 @@ function endOfQuestion (result) {
 function decrement () {
     //reduce the time variable by 1
     time = time - 1;
-    //determine whether time is up
+    if (time < 10) {
+        $("#timer").css("color", "red");
+    };
     $("#timer").text(time);
+
+    //determine whether time is up
     if (time < 1) {
         endOfQuestion("NoTime");
     } 
@@ -128,7 +132,8 @@ function listQuestions () {
 
 function showQuestion () {
     //initiate the timer
-    time = 30;
+    time = 20;
+    $("#timer").css("color", "white");
 
     // randomly select next question number
     var randomNum = Math.floor(Math.random() * questionNumbers.length);
