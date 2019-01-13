@@ -1,4 +1,3 @@
-
 var trivia = [
 // This object contains the following fields:
 //    question = the question being asked
@@ -43,7 +42,8 @@ var timeOuts = 0;               // number of questions where time ran out
 var questionNumbers = [];       // array of trivia index numbers to select from
 
 function endOfGame () {
-    $("#queston").text("");
+    //display final counts and show restart button
+    $("#question").empty();
     $("#graphics").empty();
     $("#result").text("Game Over!");
     $("#graphics").append("<p>Number of wins: &nbsp; " + wins + "</p>");
@@ -53,6 +53,7 @@ function endOfGame () {
 };
 
 function checkForLastQuestion () {
+    //determine whether all of the questions have been used and branch accordingly
     if (questionNumbers.length === 0) {
         endOfGame();
     } else {
@@ -61,9 +62,11 @@ function checkForLastQuestion () {
 };
 
 function endOfQuestion (result) {
+    //display results of question and determine next step
+
     //stop the timer
     clearTimeout(intervalID);
-    //display message according to the result
+    //display message according to the result and increment appropriate counter
     switch (result) {
         case "NoTime":
             $("#result").text("Time's Up!");
@@ -77,7 +80,7 @@ function endOfQuestion (result) {
             $("#result").text("Wrong!");
             losses = losses + 1;
     }
-    // first, empty the contents of the graphics section
+    //empty the contents of the graphics section
     $("#graphics").empty();
     $("#graphics").append("<p>Correct answer: " + trivia[currentQuestionNumber].answers[trivia[currentQuestionNumber].correctAnswer] + "</p>");
     $("#graphics").append("<img src='assets/images/" + trivia[currentQuestionNumber].image + "' height :250px; width: 200px>");
@@ -90,6 +93,7 @@ function endOfQuestion (result) {
 function decrement () {
     //reduce the time variable by 1
     time = time - 1;
+    //change the font color to red if less than 10 seconds left
     if (time < 10) {
         $("#timer").css("color", "red");
     };
@@ -103,6 +107,8 @@ function decrement () {
 
 
 function checkAnswer (answer) {
+    //determine whether answer selected is correct or not and respond appropriately
+    
     //first stop the timer
     clearTimeout(intervalID);
     //clear out any existing elements
@@ -116,9 +122,11 @@ function checkAnswer (answer) {
 };
 
 function listQuestions () {
-    // first, empty the contents of the graphics section
+    //display the list of possible answers
+
+    //first, empty the contents of the graphics section
     $("#graphics").empty();
-    // now, create a button for each possible answer.
+    //then create a button for each possible answer.
     for (var i = 0; i <= 3; i++) {
         var newButton = $("<button>");
         newButton.text(trivia[currentQuestionNumber].answers[i]);
@@ -131,8 +139,10 @@ function listQuestions () {
 };
 
 function showQuestion () {
+    //reset the timer, then select and display the next question
+
     //initiate the timer
-    time = 20;
+    time = 30;
     $("#timer").css("color", "white");
 
     // randomly select next question number
@@ -156,6 +166,8 @@ function showQuestion () {
 };
 
 function startGame() {
+    // reset the question numbers array and counters, then display the start button
+
     console.log("startGame");
     // fill question numbers array with an index number for each element of trivia object
     questionNumbers = [];
@@ -179,5 +191,4 @@ function startGame() {
 };
 
 // Start the game!
-
 startGame();

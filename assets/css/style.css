@@ -55,6 +55,7 @@ button {
 
 #result {
     text-decoration: underline;
+    color: rgb(247, 223, 10); 
 }
 
 #graphics {
